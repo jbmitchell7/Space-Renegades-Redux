@@ -1,8 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://4k7ny8iwvays"]
+[gd_scene load_steps=13 format=3 uid="uid://4k7ny8iwvays"]
 
 [ext_resource type="Texture2D" uid="uid://dxlhmnm2ahl54" path="res://Backgrounds/darkPurple.png" id="1_0agbe"]
 [ext_resource type="PackedScene" uid="uid://7xu6jp87abcv" path="res://player.tscn" id="1_cqlud"]
 [ext_resource type="Script" path="res://level.gd" id="1_k7aow"]
+[ext_resource type="Texture2D" uid="uid://caeetwl28tisk" path="res://PNG/Effects/star1.png" id="4_2ccmd"]
+[ext_resource type="Texture2D" uid="uid://1rmnpp2vc1uw" path="res://PNG/Effects/star2.png" id="5_5so36"]
+[ext_resource type="Texture2D" uid="uid://ulwdhbpwb1yk" path="res://PNG/Effects/star3.png" id="6_ne85f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xsn14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2ccmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5so36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ne85f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvj20"]
 size = Vector2(125.5, 720)
@@ -20,15 +40,6 @@ size = Vector2(1280, 120)
 script/source = "extends Timer
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_timeout() -> void:
 	print(\"Meteor\")
 "
@@ -40,6 +51,88 @@ script = ExtResource("1_k7aow")
 position = Vector2(635.5, 359.5)
 scale = Vector2(5.31641, 3.11328)
 texture = ExtResource("1_0agbe")
+
+[node name="Stars" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.665007
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D14" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D15" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
+
+[node name="AnimatedSprite2D16" type="AnimatedSprite2D" parent="Stars"]
+sprite_frames = SubResource("SpriteFrames_xsn14")
+autoplay = "default"
+frame_progress = 0.177109
 
 [node name="Player" parent="." instance=ExtResource("1_cqlud")]
 position = Vector2(607, 493)
@@ -81,4 +174,7 @@ script = SubResource("GDScript_jl6nq")
 
 [node name="Meteors" type="Node2D" parent="."]
 
+[node name="Lasers" type="Node2D" parent="."]
+
+[connection signal="laser" from="Player" to="." method="_on_player_laser"]
 [connection signal="timeout" from="MeteorTimer" to="." method="_on_meteor_timer_timeout"]
