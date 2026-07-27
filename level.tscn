@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://4k7ny8iwvays"]
+
+[ext_resource type="Texture2D" uid="uid://dxlhmnm2ahl54" path="res://Backgrounds/darkPurple.png" id="1_0agbe"]
+[ext_resource type="PackedScene" uid="uid://7xu6jp87abcv" path="res://player.tscn" id="1_cqlud"]
+[ext_resource type="Script" path="res://level.gd" id="1_k7aow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvj20"]
+size = Vector2(125.5, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ontbh"]
+size = Vector2(120, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6kvq"]
+size = Vector2(1280, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4h4lg"]
+size = Vector2(1280, 120)
+
+[sub_resource type="GDScript" id="GDScript_jl6nq"]
+script/source = "extends Timer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_timeout() -> void:
+	print(\"Meteor\")
+"
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_k7aow")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(635.5, 359.5)
+scale = Vector2(5.31641, 3.11328)
+texture = ExtResource("1_0agbe")
+
+[node name="Player" parent="." instance=ExtResource("1_cqlud")]
+position = Vector2(607, 493)
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="Left" type="StaticBody2D" parent="Borders"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left"]
+position = Vector2(-61, 360)
+shape = SubResource("RectangleShape2D_cvj20")
+
+[node name="Right" type="StaticBody2D" parent="Borders"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right"]
+position = Vector2(1338, 359)
+shape = SubResource("RectangleShape2D_ontbh")
+
+[node name="Top" type="StaticBody2D" parent="Borders"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Top"]
+position = Vector2(640, -61)
+shape = SubResource("RectangleShape2D_n6kvq")
+
+[node name="Bottom" type="StaticBody2D" parent="Borders"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Bottom"]
+position = Vector2(641, 774)
+shape = SubResource("RectangleShape2D_4h4lg")
+
+[node name="MeteorTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+script = SubResource("GDScript_jl6nq")
+
+[node name="Meteors" type="Node2D" parent="."]
+
+[connection signal="timeout" from="MeteorTimer" to="." method="_on_meteor_timer_timeout"]
