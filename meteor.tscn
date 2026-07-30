@@ -17,4 +17,5 @@ position = Vector2(244, 216)
 position = Vector2(244, 215)
 shape = SubResource("CircleShape2D_5ley7")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

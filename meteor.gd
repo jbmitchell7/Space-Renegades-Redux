@@ -4,6 +4,8 @@ var speed: int
 var rotation_speed: int
 var direction_x: float
 
+signal collision
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var rng := RandomNumberGenerator.new()
@@ -26,3 +28,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position += Vector2(direction_x, 1.0) * speed * delta
 	rotation_degrees += rotation_speed * delta
+	
+func _on_body_entered(_body):
+	collision.emit()
+
+func _on_area_entered(area: Area2D) -> void:
+	area.queue_free()
+	queue_free()
