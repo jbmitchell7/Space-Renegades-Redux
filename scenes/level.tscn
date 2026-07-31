@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://4k7ny8iwvays"]
+[gd_scene load_steps=15 format=3 uid="uid://4k7ny8iwvays"]
 
 [ext_resource type="Texture2D" uid="uid://dxlhmnm2ahl54" path="res://Backgrounds/darkPurple.png" id="1_0agbe"]
-[ext_resource type="PackedScene" uid="uid://7xu6jp87abcv" path="res://player.tscn" id="1_cqlud"]
-[ext_resource type="Script" path="res://level.gd" id="1_k7aow"]
+[ext_resource type="PackedScene" uid="uid://7xu6jp87abcv" path="res://scenes/player.tscn" id="1_cqlud"]
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_k7aow"]
 [ext_resource type="Texture2D" uid="uid://caeetwl28tisk" path="res://PNG/Effects/star1.png" id="4_2ccmd"]
 [ext_resource type="Texture2D" uid="uid://1rmnpp2vc1uw" path="res://PNG/Effects/star2.png" id="5_5so36"]
 [ext_resource type="Texture2D" uid="uid://ulwdhbpwb1yk" path="res://PNG/Effects/star3.png" id="6_ne85f"]
-[ext_resource type="PackedScene" uid="uid://6daseg2fr4c8" path="res://ui.tscn" id="7_ky3sp"]
+[ext_resource type="PackedScene" uid="uid://6daseg2fr4c8" path="res://scenes/ui.tscn" id="7_ky3sp"]
+[ext_resource type="AudioStream" uid="uid://qlcdrbosjjpt" path="res://audio/sfx_twoTone.ogg" id="9_kuo4n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xsn14"]
 animations = [{
@@ -183,6 +184,9 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="UI" parent="." instance=ExtResource("7_ky3sp")]
+
+[node name="StartSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_kuo4n")
 
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]
 [connection signal="timeout" from="MeteorTimer" to="." method="_on_meteor_timer_timeout"]

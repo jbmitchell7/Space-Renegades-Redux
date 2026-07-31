@@ -1,8 +1,9 @@
 extends Control
 
-@export var level_scene: PackedScene = load("res://level.tscn")
+@export var level_scene: PackedScene = load("res://scenes/level.tscn")
 
 func _ready() -> void:
+	$GameOverSound.play()
 	$CenterContainer/VBoxContainer/Score.text = $CenterContainer/VBoxContainer/Score.text + str(Global.score)
 
 func _input(event):

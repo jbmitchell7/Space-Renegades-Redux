@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://6daseg2fr4c8"]
 
-[ext_resource type="Script" path="res://ui.gd" id="1_iykgk"]
+[ext_resource type="Script" path="res://scenes/ui.gd" id="1_iykgk"]
 [ext_resource type="FontFile" uid="uid://dk2vx0upu7mw7" path="res://Fonts/kenvector_future.ttf" id="1_vf1sd"]
 
 [node name="UI" type="CanvasLayer" groups=["ui"]]

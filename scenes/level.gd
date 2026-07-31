@@ -1,12 +1,13 @@
 extends Node2D
 
 # load scene
-var meteor_scene: PackedScene = load("res://meteor.tscn")
-var laser_scene: PackedScene = load("res://laser.tscn")
+var meteor_scene: PackedScene = load("res://scenes/meteor.tscn")
+var laser_scene: PackedScene = load("res://scenes/laser.tscn")
 
 var health := 3
 
 func _ready() -> void:
+	$StartSound.play()
 	# set up health
 	get_tree().call_group('ui', 'set_health', health)
 
@@ -38,7 +39,8 @@ func _on_meteor_collision():
 	health -= 1
 	get_tree().call_group('ui', 'set_health', health)
 	if (health <= 0):
-		get_tree().change_scene_to_file.call_deferred('res://game_over.tscn')
+		get_tree().change_scene_to_file.call_deferred('res://scenes/game_over.tscn')
+	$Player.play_damage_sound()
 
 
 func _on_player_laser(pos) -> void:

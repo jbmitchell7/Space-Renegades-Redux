@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://7b02xyxexyu7"]
+[gd_scene load_steps=5 format=3 uid="uid://7b02xyxexyu7"]
 
-[ext_resource type="FontFile" uid="uid://dk2vx0upu7mw7" path="res://Fonts/kenvector_future.ttf" id="1_s2gff"]
-[ext_resource type="Script" path="res://game_over.gd" id="1_soo05"]
-[ext_resource type="FontFile" uid="uid://dff823ssmqebh" path="res://Fonts/kenvector_future_thin.ttf" id="2_r18nj"]
+[ext_resource type="Script" path="res://scenes/game_over.gd" id="1_hk7pv"]
+[ext_resource type="FontFile" uid="uid://dk2vx0upu7mw7" path="res://Fonts/kenvector_future.ttf" id="2_rbsi2"]
+[ext_resource type="FontFile" uid="uid://dff823ssmqebh" path="res://Fonts/kenvector_future_thin.ttf" id="3_u84lp"]
+[ext_resource type="AudioStream" uid="uid://dr0f6mrhle4he" path="res://audio/sfx_lose.ogg" id="4_jy68j"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -11,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_soo05")
+script = ExtResource("1_hk7pv")
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
@@ -37,7 +38,7 @@ layout_mode = 2
 [node name="GameOver" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.180392, 1, 0.317647, 1)
-theme_override_fonts/font = ExtResource("1_s2gff")
+theme_override_fonts/font = ExtResource("2_rbsi2")
 theme_override_font_sizes/font_size = 60
 text = "Game Over"
 horizontal_alignment = 1
@@ -45,7 +46,7 @@ horizontal_alignment = 1
 [node name="Score" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.180392, 1, 0.317647, 1)
-theme_override_fonts/font = ExtResource("1_s2gff")
+theme_override_fonts/font = ExtResource("2_rbsi2")
 theme_override_font_sizes/font_size = 25
 text = "Your Score: "
 horizontal_alignment = 1
@@ -67,6 +68,9 @@ theme_override_constants/margin_bottom = 20
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.180392, 1, 0.317647, 1)
-theme_override_fonts/font = ExtResource("2_r18nj")
+theme_override_fonts/font = ExtResource("3_u84lp")
 theme_override_font_sizes/font_size = 20
 text = "Press space to start again"
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jy68j")
